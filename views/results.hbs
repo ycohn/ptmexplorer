@@ -34,6 +34,7 @@
         <th>LTP_LIT</th>
         <th>MS_LIT</th>
         <th>MS_CST</th>
+        <th>MOD_SEQ_DIAGRAM</th>
       </tr>
     </thead>
     <tbody>
@@ -65,13 +66,17 @@
         <td>{{protein.ltp_lit}}</td>
         <td>{{protein.ms_lit}}</td>
         <td>{{protein.ms_cst}}</td>
+        <td></td>
       </tr>
     {{/each}}
     </tbody>
     </table>
    </div>
+   <div class="rulers">
+   </div>
   </div>
 </div>
+
 <div class="panel panel-primary">
   <div class="panel-heading">
     <h3 class="panel-title">Legend</h3>
@@ -189,4 +194,56 @@
     </div>
   </div>
  </div>
+</div>
+
+{{#each proteins as |protein|}}
+ <script src="//d3js.org/d3.v3.min.js"></script>
+ <script>
+
+var seq = "{{protein.mod-site_seq}}"; 
+var seqlength = seq.length;
+var axisDomain = seq.split("")
+
+var margin = {top: 25, right: 25, bottom: 25, left: 25},
+    width = 300 - margin.left - margin.right,
+    height = 70 - margin.top - margin.bottom;
+
+var x = d3.scale.ordinal()
+    .domain(axisDomain)
+    .rangePoints([0, width]);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .ticks(12)
+    .orient("bottom");
+
+var div = d3.select("body").append("div") 
+    .attr("class", "tooltip")       
+    .style("opacity", 0);
+
+var svg = d3.select(".rulers").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+svg.append("text")
+        .attr("x", (width / 2))             
+        .attr("y", 0 - (margin.top / 2))
+        .attr("text-anchor", "middle")  
+        .style("font-size", "16px")  
+        .text("{{protein.upid}}");
+
+svg.append("g")
+    .attr("class", "x axis")
+    .call(xAxis);
+
+svg.selectAll("text")  
+    .append("title")
+    .text("{{protein.mod_type}}");
+
+ </script>
+ {{/each}}
+
+
 
