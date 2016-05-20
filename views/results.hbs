@@ -1,0 +1,192 @@
+<div class="container">
+<div class="panel panel-warning">
+  <div class="panel-heading">
+    <h3 class="panel-title">Results</h3>
+  </div>
+  <div class="panel-body">
+  <div class="table-responsive">
+  <table class="table table-striped table-hover ">
+    <thead>
+      <tr>
+        <th>UPID</th>
+        <th>Gene</th>
+   {{!--      <th>CHR_LOC\NCHR_LOC</th> --}}
+        <th>FTID</th>
+        <th>dbSNP</th>
+        <th>AA_CHANGE</th>
+        <th>WT_AA</th>
+       {{!--  <th>MUT_RSD#</th> --}}
+        <th>VAR_AA</th>
+        <th>VAR_TYPE</th>
+       {{!--  <th>DISEASE(s)</th> --}}
+        <th>MUT_SOURCE</th>
+        <th>PROTEIN</th>
+        <th>ACC_ID</th>
+        <th>MOD_RSD</th>
+        <th>MOD_AA</th>
+        <th>RSD_CONSERVATION</th>
+        <th>MOD_TYPE</th>
+        <th>SITE_GRP_ID</th>
+        <th>MOD-SITE_SEQ</th>
+        <th>VAR_POSITION</th>
+        <th>VAR_SITE_SEQ</th>
+        <th>VAR_CLASS</th>
+        <th>LTP_LIT</th>
+        <th>MS_LIT</th>
+        <th>MS_CST</th>
+      </tr>
+    </thead>
+    <tbody>
+    {{#each proteins as |protein|}}
+      <tr>
+        <td>{{protein.upid}}</td>
+        <td>{{protein.gene}}</td>
+       {{!--  <td>{{protein.chr_loc}}</td> --}}
+        <td>{{protein.ftid}}</td>
+        <td>{{protein.dbSNP}}</td>
+        <td>{{protein.aa_change}}</td>
+        <td>{{protein.wt_aa}}</td>
+       {{!--  <td>{{protein.mut_rsd#}}</td> --}}
+        <td>{{protein.var_aa}}</td>
+        <td>{{protein.var_type}}</td>
+     {{!--    <td>{{protein.disease(s)}}</td> --}}
+        <td>{{protein.mut_source}}</td>
+        <td>{{protein.protein}}</td>
+        <td>{{protein.acc_id}}</td>
+        <td>{{protein.mod_rsd}}</td>
+        <td>{{protein.mod_aa}}</td>
+        <td>{{protein.rsd_conservation}}</td>
+        <td>{{protein.mod_type}}</td>
+        <td>{{protein.site_grp_id}}</td>
+        <td>{{protein.mod-site_seq}}</td>
+        <td>{{protein.var_position}}</td>
+        <td>{{protein.var_site_seq}}</td>
+        <td>{{protein.var_class}}</td>
+        <td>{{protein.ltp_lit}}</td>
+        <td>{{protein.ms_lit}}</td>
+        <td>{{protein.ms_cst}}</td>
+      </tr>
+    {{/each}}
+    </tbody>
+    </table>
+   </div>
+  </div>
+</div>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Legend</h3>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped table-hover" id="legend-table">
+      <thead>
+        <tr>
+          <th>Header</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody> 
+       <tr>
+         <td>UPID</td>
+          <td>Unique ID (UID) assigned to a gene by the HUGO Nomenclature Committee and adapted by HUPO for the cognate protein.
+          </td>
+      </tr>
+      <tr>
+          <td>Gene</td>
+          <td>UniProtKB ID</td>
+     {{!--      <td>CHR_LOC\NCHR_LOC</td> --}}
+     </tr>
+     <tr>
+          <td>FTID</td>
+          <td></td>
+    </tr>
+    <tr>
+          <td>dbSNP</td>
+          <td>The UID of the variant from dbSNP, the NCBI database of Single Nucleotide Polymorphisms (www.ncbi.nlm.nih.gov/SNP/).
+  </td>
+    </tr>
+    <tr>
+          <td>AA_CHANGE</td>
+          <td>The amino acid substitution caused by the nsSNP. For example, Ser16Pro (or S16P) indicates a residue change from serine (WT) to proline at residue number 16.
+  </td>
+    </tr>
+    <tr>
+          <td>WT_AA</td>
+          <td>The wild type (WT) amino acid that is changed by the mutation</td>
+    </tr>
+    <tr>
+         {{!--  <td>MUT_RSD#</td> --}}
+          <td>VAR_AA</td>
+          <td>The variant amino acid encoded by the missense mutation</td>
+    </tr>
+    <tr>
+          <td>VAR_TYPE</td>
+          <td>Variant type: Polymorphism, Disease or Unclassified</td>
+    </tr>
+    <tr>
+         {{!--  <td>DISEASE(s)</td> --}}
+          <td>MUT_SOURCE</td>
+          <td>"The sources of mutant data include HUMSAVAR (www.uniprot.org/docs/humsavar), The Cancer Genome Atlas (TCGA; cancergenome.nih.gov/), Catalogue Of Somatic Mutations In Cancer (COSMIC; cancer.sanger.ac.uk/cancergenome/), and the cBioPortal for Cancer Genomics (cBIO; www.cbioportal.org/)."</td>
+    </tr>
+    <tr>
+          <td>PROTEIN</td>
+          <td>Primary name in PhosphoSitePlus® (PSP)</td>
+    </tr>
+    <tr>
+          <td>ACC_ID</td>
+          <td>Primary accession ID in PSP</td>
+    </tr>
+    <tr>
+          <td>MOD_RSD</td>
+          <td>The sequence number of the residue with the posttranslational modification (PTM)</td>
+    </tr>
+    <tr>
+          <td>MOD_AA</td>
+          <td>The type of amino acid with the PTM</td>
+    </tr>
+    <tr>
+          <td>RSD_CONSERVATION</td>
+          <td>The conservation of the modified amino acid between species: human (H), mouse (M), rat )R)</td>
+    </tr>
+    <tr>
+          <td>MOD_TYPE</td>
+          <td>The type of PTM occurring on the modified residue, e.g.phosphorylation, ubiquitylation, etc.</td>
+    </tr>
+    <tr>
+          <td>SITE_GRP_ID</td>
+          <td>Unique identifier of a modification site and its homologous sites in all proteoforms and species</td>
+    </tr>
+    <tr>
+          <td>MOD-SITE_SEQ</td>
+          <td>WT sequence: includes the modsite (lower case letter) plus surrounding sequence (+/- 5 rsds.). The location of the mutated residue is marked with an asterisk.</td>
+    </tr>
+    <tr>
+          <td>VAR_POSITION</td>
+          <td>The mutant position relative to posttranslational modification. N-terminal residues are marked with a minus sign. For example, '-3' indicates that the mutated residue lies three residues N-terminal to the modsite. A zero indicates that the modified residue itself has been mutated, i.e. is a Class I Variant..</td>
+    </tr>
+    <tr>
+          <td>VAR_SITE_SEQ</td>
+          <td>Variant sequence: includes the modsite (lower case letter) plus surrounding sequence (+/- 5 rsds.). The mutated residue is marked with an asterisk.</td>
+    </tr>
+    <tr>
+          <td>VAR_CLASS</td>
+          <td>CLASS I (site loss), CLASS Ia (modsite switch), or CLASS II (flanking change) *</td>
+    </tr>
+    <tr>
+          <td>LTP_LIT</td>
+          <td>The number of associated literature records derived using low-throughput experimental techniques. An LTP result may be more reliable than an MS2 result.</td>
+    </tr>
+    <tr>
+          <td>MS_LIT</td>
+          <td>The number of published articles using proteomic MS experiments to locate residues that are modified.</td>
+    </tr>
+    <tr>
+          <td>MS_CST</td>
+          <td>The number of associated shotgun proteomic experiments performed at Cell Signaling Technology (CST) in which the indicated PTM was observed.</td>
+    </tr>
+       <tr>
+       </tr>
+      </tbody>
+    </div>
+  </div>
+ </div>
+
