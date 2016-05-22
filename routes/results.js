@@ -6,7 +6,7 @@ var router = express.Router();
 /* POST results listing. */
 router.post('/', function (req, res, next) {
      var mysql      = require('mysql');
-     var connection = mysql.createConnection(JAWSDB_URL);
+     var connection = mysql.createConnection("mysql://kbvlfxkdq4gjve3g:ijx1rkn4p843wu4a@g8r9w9tmspbwmsyo.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/e44kgb0mva2857vu");
  connection.connect();
  
  var upid = req.body.inputProtein;
