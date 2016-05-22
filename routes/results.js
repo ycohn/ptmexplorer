@@ -6,12 +6,7 @@ var router = express.Router();
 /* POST results listing. */
 router.post('/', function (req, res, next) {
      var mysql      = require('mysql');
-     var connection = mysql.createConnection({
-       host     : process.env.DB_HOST,
-       user     : process.env.DB_USER,
-       password : process.env.DB_PSWD,
-       database : process.env.DB_NAME
-     });
+     var connection = mysql.createConnection(DATABASE_URL);
  connection.connect();
  
  var upid = req.body.inputProtein;
@@ -30,7 +25,7 @@ router.post('/', function (req, res, next) {
   });
 
 
- connection.end();   
+ // ßconnection.end();   
 
 });
 
